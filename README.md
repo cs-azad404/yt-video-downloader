@@ -1,20 +1,22 @@
 # Music Downloader
 
-A clean, lightweight Tkinter-based YouTube audio/video downloader for Windows.
+A clean, modern Tkinter-based downloader for YouTube, Instagram reels, Facebook clips, and more.
 
 ## Features
-- Paste any YouTube URL and auto-fetch metadata
+- Paste a supported URL and auto-fetch metadata
 - Download audio as MP3 or video in selected quality
-- Supports standard YouTube links, `youtu.be`, `shorts`, `embed`, and playlists
-- Bundled with `ffmpeg.exe` for conversion
-- Uses `yt-dlp` for robust YouTube extraction
+- Select the download folder and save it for next time
+- Supports YouTube, Instagram reels, Facebook video URLs, `youtu.be`, `shorts`, `embed`, and playlists
+- Built with `yt-dlp` and `ffmpeg.exe` for robust extraction and conversion
+- Modern dark UI with progress feedback and folder browsing
 
 ## Quick Start
 
 ### 👥 For Non-Technical Users (Windows)
 Download and run the standalone executable:
 - Download `MusicDownloader.exe` from the [Releases](../../releases) page.
-- Double-click to run — no installation needed!
+- Double-click to run — no installation needed.
+- You can save downloads to any folder and the app will remember your choice.
 
 ### 👨‍💻 For Developers (Python Source)
 1. Clone the repository:
@@ -64,12 +66,19 @@ To rebuild the executable yourself:
 
 2. Ensure `ffmpeg.exe` is in the project root (use `.\setup.ps1` to download it).
 
-3. Run the build command:
+3. Rebuild the EXE with the next-version icon:
    ```powershell
    pyinstaller --onefile --noconsole --icon=app.ico --add-binary "ffmpeg.exe;." --name MusicDownloader main.py
    ```
 
 4. The executable will be created at `dist\MusicDownloader.exe`.
+
+## Next Release
+This branch is for the next version release with:
+- folder selection and persistent download path
+- Instagram reel and Facebook clip downloads
+- modernized dark UI
+- support for both source code and standalone EXE distribution
 
 ## Distributing the Executable
 - Upload `dist\MusicDownloader.exe` to GitHub Releases for end users.
@@ -78,18 +87,17 @@ To rebuild the executable yourself:
 ## Notes
 - Keep `ffmpeg.exe` next to `main.py` for source code development.
 - For the standalone executable, `ffmpeg.exe` is bundled by PyInstaller when using `--add-binary`.
-- If YouTube extraction fails, update `yt-dlp` with:
+- If extraction fails, update `yt-dlp` with:
   ```powershell
   python -m pip install -U yt_dlp
   ```
-- For cleaner filenames, the app uses `restrictfilenames` option.
-- For cleaner filenames, the app uses `restrictfilenames`.
+- The app now saves your chosen download folder in `settings.json`.
 
 ## Project Files
 - `main.py` — application source
 - `requirements.txt` — Python dependencies
-- `ffmpeg.exe` — bundled FFmpeg binary
 - `app.ico` — application icon
+- `settings.json` — saved app preferences (created at runtime)
 
 ## License
 Use freely for personal or educational purposes.
