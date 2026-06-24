@@ -1,10 +1,12 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 
+import os
+
 a = Analysis(
     ['main.py'],
     pathex=[],
-    binaries=[('ffmpeg.exe', '.')],
+    binaries=[('ffmpeg.exe', '.')] if os.path.isfile('ffmpeg.exe') else [],
     datas=[],
     hiddenimports=[
         'yt_dlp',
