@@ -9,60 +9,80 @@ A clean, lightweight Tkinter-based YouTube audio/video downloader for Windows.
 - Bundled with `ffmpeg.exe` for conversion
 - Uses `yt-dlp` for robust YouTube extraction
 
+## Quick Start
+
+### 👥 For Non-Technical Users (Windows)
+Download and run the standalone executable:
+- Download `MusicDownloader.exe` from the [Releases](../../releases) page.
+- Double-click to run — no installation needed!
+
+### 👨‍💻 For Developers (Python Source)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/cs-azad404/yt-video-downloader.git
+   cd music-downloader
+   ```
+2. Run the one-step setup script:
+   ```powershell
+   .\setup.ps1
+   ```
+3. Launch the app:
+   ```powershell
+   .\venv\Scripts\python.exe main.py
+   ```
+
 ## Requirements
-- Windows 10/11
-- Python 3.8+ for development
-- `ffmpeg.exe` must remain in the same folder as `main.py`
+- **For standalone EXE**: Windows 10/11 (no additional software needed)
+- **For source code**: Python 3.8+ and the dependencies in `requirements.txt`
 
-If you prefer a one-step setup, run the included `setup.ps1` (Windows) which
-creates a virtual environment, installs dependencies, and downloads `ffmpeg.exe`.
 ## Installation
-1. Open PowerShell in the project folder.
-2. Create a virtual environment:
-   ```powershell
-   python -m venv venv
-   .\venv\Scripts\Activate.ps1
-   ```
-3. Install dependencies:
-   ```powershell
-   python -m pip install --upgrade pip
-   python -m pip install -r requirements.txt
-   ```
 
-## Running
-```powershell
-python main.py
-```
-
-## One-step setup (recommended for Windows)
-
-Run the PowerShell setup script from the project root. This will create a
-`venv`, install required packages, and download `ffmpeg.exe` automatically:
-
-```powershell
-./setup.ps1
-```
+If you're using the source code, follow the "For Developers" section above. The `setup.ps1` script automates everything.
 
 For macOS/Linux users, use the shell script:
 
 ```bash
 ./setup.sh
 ```
-## Build standalone executable
-Install PyInstaller and run:
-```powershell
-python -m pip install pyinstaller
-pyinstaller --onefile --noconsole --icon=app.ico --add-binary "ffmpeg.exe;." main.py
-```
 
-Then use the generated `dist\main.exe`.
+## Run from source or executable
+This repository includes both the full source code and a ready-to-run executable at `dist\MusicDownloader.exe`.
+
+- Non-technical users can run `dist\MusicDownloader.exe` directly.
+- Developers can run the source version with `python main.py` after installing dependencies.
+
+## Rebuilding the Executable (Developers)
+
+A pre-built `MusicDownloader.exe` is available in [Releases](../../releases) for end users.
+
+To rebuild the executable yourself:
+
+1. Install PyInstaller:
+   ```powershell
+   python -m pip install pyinstaller
+   ```
+
+2. Ensure `ffmpeg.exe` is in the project root (use `.\setup.ps1` to download it).
+
+3. Run the build command:
+   ```powershell
+   pyinstaller --onefile --noconsole --icon=app.ico --add-binary "ffmpeg.exe;." --name MusicDownloader main.py
+   ```
+
+4. The executable will be created at `dist\MusicDownloader.exe`.
+
+## Distributing the Executable
+- Upload `dist\MusicDownloader.exe` to GitHub Releases for end users.
+- Users can download and run the EXE without needing Python or any setup.
 
 ## Notes
-- Keep `ffmpeg.exe` next to `main.py` or the executable.
+- Keep `ffmpeg.exe` next to `main.py` for source code development.
+- For the standalone executable, `ffmpeg.exe` is bundled by PyInstaller when using `--add-binary`.
 - If YouTube extraction fails, update `yt-dlp` with:
   ```powershell
   python -m pip install -U yt_dlp
   ```
+- For cleaner filenames, the app uses `restrictfilenames` option.
 - For cleaner filenames, the app uses `restrictfilenames`.
 
 ## Project Files
