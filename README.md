@@ -9,6 +9,7 @@ A clean, modern Tkinter-based downloader for YouTube, Instagram reels, Facebook 
 - Supports YouTube, Instagram reels, Facebook video URLs, `youtu.be`, `shorts`, `embed`, and playlists
 - Built with `yt-dlp` and `ffmpeg.exe` for robust extraction and conversion
 - Modern dark UI with progress feedback and folder browsing
+- Note: Instagram and Facebook content may require browser authentication or cookies for some posts
 
 ## Quick Start
 
@@ -87,7 +88,8 @@ This branch is for the next version release with:
 ## Notes
 - Keep `ffmpeg.exe` next to `main.py` for source code development.
 - For the standalone executable, `ffmpeg.exe` is bundled by PyInstaller when using `--add-binary`.
-- If extraction fails, update `yt-dlp` with:
+- If Instagram or Facebook extraction fails, the content may require browser login/cookies or may not be publicly accessible.
+- If extraction fails for any site, update `yt-dlp` with:
   ```powershell
   python -m pip install -U yt_dlp
   ```
