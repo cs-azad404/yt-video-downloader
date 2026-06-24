@@ -14,6 +14,8 @@ A clean, lightweight Tkinter-based YouTube audio/video downloader for Windows.
 - Python 3.8+ for development
 - `ffmpeg.exe` must remain in the same folder as `main.py`
 
+If you prefer a one-step setup, run the included `setup.ps1` (Windows) which
+creates a virtual environment, installs dependencies, and downloads `ffmpeg.exe`.
 ## Installation
 1. Open PowerShell in the project folder.
 2. Create a virtual environment:
@@ -32,6 +34,20 @@ A clean, lightweight Tkinter-based YouTube audio/video downloader for Windows.
 python main.py
 ```
 
+## One-step setup (recommended for Windows)
+
+Run the PowerShell setup script from the project root. This will create a
+`venv`, install required packages, and download `ffmpeg.exe` automatically:
+
+```powershell
+./setup.ps1
+```
+
+For macOS/Linux users, use the shell script:
+
+```bash
+./setup.sh
+```
 ## Build standalone executable
 Install PyInstaller and run:
 ```powershell
